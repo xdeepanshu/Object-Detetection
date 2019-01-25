@@ -15,7 +15,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
-CONFIG = {'AMQP_URI': "amqp://guest:guest@localhost"}
+CONFIG = {'AMQP_URI': "amqp://zqtfjfbn:tH8aOU7bVgzi0TDhIA0xAYd4lUyZ5pa2@mustang.rmq.cloudamqp.com/zqtfjfbn"}
 API_KEY = 'aril9uRBwIvx97EYdIfb7X0frsK0i4E83veo238HO2QD'
 
 
