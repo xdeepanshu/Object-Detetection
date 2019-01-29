@@ -1,4 +1,3 @@
-#USE ONLY PYTHON3.6
-
-flask ##Web framework
-nameko ##for RPC services 
+django 
+cloudinary 
+nameko
