@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" media="screen" href="{% static "/css/style.css" %}">
+
+{% block style %}
+{% endblock style %}
+
+</head>
+<body>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+<script src="{% static "/libs/js/particles.js" %}"></script>
+<script src="{% static "/js/app.js" %}"></script>
+
+{% block form %}
+{% endblock form %}
+
+{% block content %}
+{% endblock content %}
+
+<script>
+  var count_particles, update;
+  update = function() {
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+</body>
+</html>
