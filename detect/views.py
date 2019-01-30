@@ -32,7 +32,7 @@ def upload(request):
         backend_form=PhotoForm(),
     )
     if request.method == 'POST':
-        # Only backend upload should be posting here
+        request.POST.owner = request.user
         form = PhotoForm(request.POST, request.FILES)
         context['posted'] = form.instance
         if form.is_valid():

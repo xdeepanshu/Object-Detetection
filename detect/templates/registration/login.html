@@ -23,7 +23,9 @@
 </style>
 {% endblock style %}
 
-
+    {% if form.error %}
+        alert(form.errors)
+    {% endif %} 
 
 {% block form %}
 <div id = "form">
@@ -40,7 +42,7 @@
 </tr>
 </table>
 <input type="submit" value="login" id="button/>
-<input type="hidden" name="next" value="{{ next }}" />
+<input type="hidden"/>
 </form>
 </div>
 {% endblock form %}
