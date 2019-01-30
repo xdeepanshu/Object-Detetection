@@ -1,3 +1,5 @@
+*.sqllite3
+
 /detect/migrations
 
 .vscode/
