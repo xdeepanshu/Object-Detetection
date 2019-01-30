@@ -1,10 +1,27 @@
-{% extends 'base2.html' %}
-{% block content %}
+{% extends 'animated_base.html' %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% block style %}
+<style>
+#form {
+    width: 250px;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    margin: auto;
 
+}
+</style>
+{% endblock style %}
+
+
+
+{% block form %}
+<div id = "form">
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 <table>
@@ -17,9 +34,10 @@
     <td>{{ form.password }}</td>
 </tr>
 </table>
-
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+</div>
+{% endblock form %}
 
-{% endblock %}
+
