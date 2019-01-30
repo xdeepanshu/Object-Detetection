@@ -1,4 +1,5 @@
 django 
 cloudinary 
 nameko
-pymsql
+#pymsql
+django-crispy-forms

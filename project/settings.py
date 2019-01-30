@@ -126,3 +126,8 @@ CLOUDINARY = {
   'api_key': '135443746721697',  
   'api_secret': 'ad5HvB5t_uiobcUXvOm2TQ9pk-4',  
 }
+
+
+TEMPLATE_DIRS = (
+    os.path.join(os.getcwd(), 'templates/'),
+)
