@@ -1,5 +1,6 @@
 import six
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from .forms import PhotoForm
 from .models import Photo
@@ -9,6 +10,7 @@ def filter_nones(d):
     return dict((k, v) for k, v in six.iteritems(d) if v is not None)
 
 
+@login_required
 def list_view(request):
     defaults = dict(format="jpg", height=150, width=150)
     defaults["class"] = "thumbnail inline"
@@ -26,7 +28,7 @@ def list_view(request):
     samples = [filter_nones(dict(defaults, **sample)) for sample in samples]
     return render(request, 'list.html', dict(photos=Photo.objects.all(), samples=samples))
 
-
+@login_required
 def upload(request):
     context = dict(
         backend_form=PhotoForm(),
