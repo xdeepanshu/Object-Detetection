@@ -13,7 +13,12 @@
     right: 0;
     z-index: 4;
     margin: auto;
+    padding: 20px;
 
+}
+
+#button{
+    position: center
 }
 </style>
 {% endblock style %}
@@ -34,7 +39,7 @@
     <td>{{ form.password }}</td>
 </tr>
 </table>
-<input type="submit" value="login" />
+<input type="submit" value="login" id="button/>
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 </div>
