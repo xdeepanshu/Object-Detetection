@@ -7,10 +7,11 @@ class Photo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     create_time = models.DateTimeField(default=timezone.now)
     image = CloudinaryField('image')
+    watson_response = models.TextField(max_length=10000, editable=True)
 
     def __unicode__(self):
         try:
-            public_id = self.image.public_id
+            public_id = self.user.name
         except AttributeError:
             public_id = ''
-        return "Photo <%s:%s>" % (self.title, public_id)
+        return "Photo <%s>" % (public_id)

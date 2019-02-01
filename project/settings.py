@@ -136,3 +136,8 @@ CLOUDINARY = {
 TEMPLATE_DIRS = (
     os.path.join(os.getcwd(), 'templates/'),
 )
+
+AMQP_URI = {
+    'AMQP_URI': 'amqp://zqtfjfbn:tH8aOU7bVgzi0TDhIA0xAYd4lUyZ5pa2@mustang.rmq.cloudamqp.com/zqtfjfbn'
+}
+	

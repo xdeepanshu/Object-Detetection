@@ -6,7 +6,33 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="{% static "/css/style.css" %}">
-  <link rel="stylesheet" media="screen" href="{% static "/libs/bootstrap-iso/bootstarp-iso.css" %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+  <style>
+  #form {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    opacity: 0.7;
+    background-color:rgb(160,160,160);
+    margin: auto;
+    padding: 20px;
+}
+
+#form:hover {
+  opacity: 1.0;
+}
+
+#button{
+    position: center
+}
+
 {% block style %}
 {% endblock style %}
 
@@ -29,7 +55,7 @@ particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": 100,
+        "value": 250,
         "density": {
           "enable": true,
           "value_area": 800

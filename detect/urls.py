@@ -7,4 +7,5 @@ urlpatterns = [
     path(r'list/', list_view, name='list'),
     path(r'upload/', upload, name='upload'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/logout/', include('django.contrib.auth.urls'), name = 'logout'),
     ]

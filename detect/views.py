@@ -2,9 +2,13 @@ import six
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+#For calling watson rpc 
+from nameko.standalone.rpc import ClusterRpcProxy
+from django.conf import settings
+
+import json
 from .forms import PhotoForm
 from .models import Photo
-
 
 def filter_nones(d):
     return dict((k, v) for k, v in six.iteritems(d) if v is not None)
@@ -42,5 +46,6 @@ def upload(request):
             # Uploads image and creates a model instance for it
             photo = form.save(commit=False)
             photo.user = request.user
+            #with ClusterRpcProxy(settings.AMQP_URI) as service:
             photo.save()
     return render(request, 'upload.html', context)
