@@ -5,7 +5,11 @@
 {% block body %}
   <!-- A standard form for sending the image data to your server -->
   <div id='backend_upload'>
-    <h1>Upload through your server</h1>
+     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4"> Upload through server. {{user}}! </h1>
+  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+  </div>
+
     <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ backend_form }}
@@ -18,11 +22,17 @@
         {% else %}
           <div class="uploaded_info">
             <div class="data">
-              <table>
+                <ul class="list-group">
+
                 {% for key, value in posted.image.metadata.items %}
-                  <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+                   <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{key}}</h5>
+                  </div>
+                  <p class="mb-1">{{value}}</p>
+                </a>
                 {% endfor %}
-              </table>
+              </ul>
             </div>
             <div class="image">
               {% cloudinary posted.image THUMBNAIL %}
@@ -32,7 +42,5 @@
       </div>
     {% endif %}
   </div>
-
-
 {% endblock %}
 </div>

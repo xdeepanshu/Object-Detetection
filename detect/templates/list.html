@@ -2,20 +2,18 @@
 {% load cloudinary %}
 
 {% block body %}
-  <h1>Welcome! {{ user }}</h1>
-
-  <h1>Your Images</h1>
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Welcome {{user}}.</h1>
+  <h1 class="display-4">Here are your images.</h1>
   <div class="photos">
-    <p>
-      <a class="upload_link" href="{% url 'upload' %}">Upload Images...</a>
-    </p>
     {% if not photos.exists %}
-      <p>No images were uploaded yet.</p>
+      <p class ="lead">No images were uploaded yet.</p>
     {% endif %}
+</div>
+    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
     {% for photo in photos %}
       <div class="photo">
           <a href="{{ photo.image.url }}" target="_blank" class="public_id_link" style="width:100px;height:100px;">
-            <div class='public_id'>{{ photo.image.public_id }} - {{ photo.title }}</div>
             {# Renders an IMG tag for a CloudinaryImage objects. #}
             {# THUMBNAIL defined in context_processors #}
             {% cloudinary photo.image THUMBNAIL %}

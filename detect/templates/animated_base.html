@@ -12,25 +12,18 @@
   <style>
   #form {
     width: 250px;
-    height: 100px;
+    height: 300px;
     position: absolute;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 4;
-    opacity: 0.7;
-    background-color:rgb(160,160,160);
+    opacity: 1;
+    background-color:white;
     margin: auto;
     padding: 20px;
-}
-
-#form:hover {
-  opacity: 1.0;
-}
-
-#button{
-    position: center
+    overflow: hidden
 }
 
 {% block style %}
@@ -71,7 +64,7 @@ particlesJS('particles-js',
           "color": "#000000"
         },
         "polygon": {
-          "nb_sides": 5
+          "nb_sides": 10
         },
         "image": {
           "src": "img/github.svg",
@@ -124,7 +117,7 @@ particlesJS('particles-js',
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": true,
+          "enable": false,
           "mode": "repulse"
         },
         "onclick": {
@@ -161,7 +154,7 @@ particlesJS('particles-js',
     "retina_detect": true,
     "config_demo": {
       "hide_card": false,
-      "background_color": "#b61924",
+      "background_color": "#000000",
       "background_image": "",
       "background_position": "50% 50%",
       "background_repeat": "no-repeat",

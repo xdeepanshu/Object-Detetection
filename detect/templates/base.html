@@ -16,7 +16,7 @@
   </head>
   <body>
             <div class="bootstrap-iso">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">Navbar</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -27,12 +27,21 @@
                 <a class="nav-link" href="{% url 'upload'%}"">Upload</a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" action={% url 'logout' %} method="get">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            <form class="form-inline my-2 my-lg-0" action={% url 'logout' %}>
+              <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
             </form>
           </div>
         </nav>
     </div>
     {% block body %}{% endblock %}
   </body>
+  <footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="/docs/4.2/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
 </html>
