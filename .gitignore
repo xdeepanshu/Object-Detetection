@@ -1,7 +1,6 @@
 *.sqllite3
 
-/detect/migrations
-.DS_Store
+*.DS_Store
 .vscode/
 
 # Byte-compiled / optimized / DLL files
