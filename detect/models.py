@@ -4,9 +4,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Photo(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     create_time = models.DateTimeField(default=timezone.now)
-    title = models.CharField("Title (optional)", max_length=200, blank=True)
     image = CloudinaryField('image')
 
     def __unicode__(self):

@@ -12,6 +12,7 @@ def filter_nones(d):
 
 @login_required
 def list_view(request):
+    user = request.user
     defaults = dict(format="jpg", height=150, width=150)
     defaults["class"] = "thumbnail inline"
 
@@ -26,7 +27,8 @@ def list_view(request):
         ]),
     ]
     samples = [filter_nones(dict(defaults, **sample)) for sample in samples]
-    return render(request, 'list.html', dict(photos=Photo.objects.all(), samples=samples))
+    #Only users can see there own images
+    return render(request, 'list.html', dict(photos=Photo.objects.filter(user=user), samples=samples))
 
 @login_required
 def upload(request):
@@ -34,11 +36,11 @@ def upload(request):
         backend_form=PhotoForm(),
     )
     if request.method == 'POST':
-        #request.POST.owner = request.user
         form = PhotoForm(request.POST, request.FILES)
         context['posted'] = form.instance
         if form.is_valid():
             # Uploads image and creates a model instance for it
-            result = form.save()
-            print(result.image.url)
+            photo = form.save(commit=False)
+            photo.user = request.user
+            photo.save()
     return render(request, 'upload.html', context)

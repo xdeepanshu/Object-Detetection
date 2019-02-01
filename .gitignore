@@ -1,4 +1,5 @@
 *.sqllite3
+*/migrations/
 
 *.DS_Store
 .vscode/
