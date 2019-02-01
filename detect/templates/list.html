@@ -4,13 +4,16 @@
 {% block body %}
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Welcome {{user}}.</h1>
-  <h1 class="display-4">Here are your images.</h1>
+  
   <div class="photos">
     {% if not photos.exists %}
-      <p class ="lead">No images were uploaded yet.</p>
+      <h1 class="display-4">No images were uploaded yet. .</h1>
+      <p class ="lead"><p>Find yourself blaming your memory again? Relax! We can't fix your neurons but we do know where that other sock is hiding.</p></p>
+        {% else %}
+          <h1 class="display-4">Here are your images.</h1>
     {% endif %}
+
 </div>
-    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
     {% for photo in photos %}
       <div class="photo">
           <a href="{{ photo.image.url }}" target="_blank" class="public_id_link" style="width:100px;height:100px;">
