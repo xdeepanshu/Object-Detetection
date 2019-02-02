@@ -13,22 +13,8 @@ def filter_nones(d):
 @login_required
 def list_view(request):
     user = request.user
-    defaults = dict(format="jpg", height=150, width=150)
-    defaults["class"] = "thumbnail inline"
-
-    # The different transformations to present
-    samples = [
-        dict(crop="fill", radius=10),
-        dict(crop="scale"),
-        dict(crop="fit", format="png"),
-        dict(crop="thumb", gravity="face"),
-        dict(format="png", angle=20, height=None, width=None, transformation=[
-            dict(crop="fill", gravity="north", width=150, height=150, effect="sepia"),
-        ]),
-    ]
-    samples = [filter_nones(dict(defaults, **sample)) for sample in samples]
     #Only users can see there own images
-    return render(request, 'list.html', dict(photos=Photo.objects.filter(user=user), samples=samples))
+    return render(request, 'list.html', dict(photos=Photo.objects.filter(user=user)))
 
 @login_required
 def upload(request):
