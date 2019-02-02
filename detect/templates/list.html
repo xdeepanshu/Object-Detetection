@@ -11,17 +11,18 @@
       <h1 class="display-4">No images were uploaded yet. .</h1>
       <p class ="lead"><p>Find yourself blaming your memory again? Relax! We can't fix your neurons but we do know where that other sock is hiding.</p></p>
         {% else %}
-          <h1 class="display-4">Here are your images.</h1>
+          <h1 class="display-6">Here are your {{photos|length}} images.</h1>
     {% endif %}
   </div>
     
     {% for photo in photos %}
-      <div class="row" style="margin-left: 10px;">
+      <div class="col-xs-10" style="margin: 10px;">
       <div class="card" style="width: 18rem;">
-      <img src="{{ photo.image.url }}" class="card-img-top" alt="...">
+      <a href="/photo_detail/{{photo.image.public_id}}"><img src="{{ photo.image.url }}" class="card-img-top" alt="{{photo.image.public_id}}"></a>
       <div class="card-body">
-      <h5 class="card-title">Identified Objects</h5>
-      <p class="card-text">{{photo.watson_response}}</p>
+      <h5 class="card-title">Created At</h5>
+      <p class="card-text">{{photo.create_time|truncatewords:"10"}}</p>
+      </div>
       </div>
       </div>
     {% endfor %}

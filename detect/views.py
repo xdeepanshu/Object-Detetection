@@ -1,6 +1,7 @@
 import six
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 
 import json
 from .forms import PhotoForm
@@ -14,7 +15,8 @@ def filter_nones(d):
 def list_view(request):
     user = request.user
     #Only users can see there own images
-    return render(request, 'list.html', dict(photos=Photo.objects.filter(user=user)))
+    photos = Photo.objects.filter(user=user)
+    return render(request, 'list.html', dict(photos=photos))
 
 @login_required
 def upload(request):
@@ -30,3 +32,20 @@ def upload(request):
             photo.user = request.user
             photo.save()
     return render(request, 'upload.html', context)
+
+@login_required
+def photo_detail(request,public_id):
+    user = request.user
+    context = {}
+    try:
+        user_photo = Photo.objects.filter(user=user)
+        for photo in user_photo:
+            if photo.image.public_id == public_id:
+                print("Found")
+                text=json.loads(photo.watson_response)["images"][0]["classifiers"][0]['classes']
+                context = dict(photo=photo, text=text)
+        else:
+            raise ObjectDoesNotExist()
+    except ObjectDoesNotExist:
+        pass
+    return render(request, 'detail.html', context)

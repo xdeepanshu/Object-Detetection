@@ -1,5 +1,4 @@
-django 
+django>=2.1.5
 cloudinary 
 nameko
-#pymsql
-django-crispy-forms
+pymsql

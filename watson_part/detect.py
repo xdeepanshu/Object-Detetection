@@ -1,3 +1,4 @@
+#'amqp://zqtfjfbn:tH8aOU7bVgzi0TDhIA0xAYd4lUyZ5pa2@mustang.rmq.cloudamqp.com/zqtfjfbn'
 from watson_developer_cloud import VisualRecognitionV3, WatsonApiException
 import os
 import json
