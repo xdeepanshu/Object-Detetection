@@ -3,11 +3,13 @@ import os
 import json
 from nameko.rpc import rpc
 
+api_key = "0tuAZ32qBLrn-RSsorNDwunBdafAyXjuUOIu6qqfyDU-"
+
 class DetectObject(object):
 	name = "detect"
 	results = None
 	@rpc
-	def compute(self,image_url,api_key):
+	def compute(self,image_url,api_key=api_key):
 		service = VisualRecognitionV3(
 		    '2018-03-19',
 		    url='https://gateway.watsonplatform.net/visual-recognition/api',
