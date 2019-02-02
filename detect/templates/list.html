@@ -2,7 +2,8 @@
 {% load cloudinary %}
 
 {% block body %}
-  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <div class="container-fluid">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Welcome {{user}}.</h1>
   
   <div class="photos">
@@ -12,23 +13,19 @@
         {% else %}
           <h1 class="display-4">Here are your images.</h1>
     {% endif %}
-
-</div>
+  </div>
+    
     {% for photo in photos %}
-      <div class="photo">
-          <a href="{{ photo.image.url }}" target="_blank" class="public_id_link" style="width:100px;height:100px;">
-            {# Renders an IMG tag for a CloudinaryImage objects. #}
-            {% cloudinary photo.image %}
-          </a>
-        
+      <div class="row" style="margin-left: 10px;">
+      <div class="card" style="width: 18rem;">
+      <img src="{{ photo.image.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+      <h5 class="card-title">Identified Objects</h5>
+      <p class="card-text">{{photo.watson_response}}</p>
+      </div>
+      </div>
     {% endfor %}
   </div>
 {% endblock %}
 {% block javascript %}
-  $(function () {
-    $('.toggle_info').click(function () {
-      $(this).closest('.photo').toggleClass('show_more_info');
-      return false;
-    });
-  });
 {% endblock %}

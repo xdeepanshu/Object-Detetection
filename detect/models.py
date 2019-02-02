@@ -33,6 +33,7 @@ def photo_handler(sender, **kwargs):
        photo_instance = kwargs['instance']
        with ClusterRpcProxy(settings.AMQP_URI) as service:
            result = service.detect.compute(photo_instance.image.url)
+           #converting response into string would be better if JSON could be saved
            photo_instance.watson_response = json.dumps(result)
            photo_instance.save()
        

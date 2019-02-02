@@ -12,9 +12,13 @@
 
     <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ backend_form }}
-      <input type="submit" value="Upload">
-    </form>
+      <div class="form-group">
+      <label for="file">Select your file</label>
+      {{ backend_form.image }}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>    
     {% if posted %}
       <div class="results">
         {% if posted.errors %}
