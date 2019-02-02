@@ -2,9 +2,10 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.utils import timezone
+import cloudinary
 
 #Using this for running watson detection
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 #For calling watson rpc 
 from nameko.standalone.rpc import ClusterRpcProxy
@@ -28,7 +29,7 @@ class Photo(models.Model):
 
 
 @receiver(post_save, sender=Photo)
-def photo_handler(sender, **kwargs):
+def photo_handler_save(sender, **kwargs):
    if kwargs['created']:
        photo_instance = kwargs['instance']
        with ClusterRpcProxy(settings.AMQP_URI) as service:
@@ -36,4 +37,12 @@ def photo_handler(sender, **kwargs):
            #converting response into string would be better if JSON could be saved
            photo_instance.watson_response = json.dumps(result)
            photo_instance.save()
+
+@receiver(pre_delete, sender=Photo)
+def photo_handler_delete(sender, **kwargs):
+       photo_instance = kwargs['instance']
+       image_public_id = photo_instance.image.public_id
+       result = cloudinary.uploader.destroy(image_public_id)
+       print(result)
+
        
