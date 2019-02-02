@@ -142,25 +142,33 @@
    
   </head>
   <body>
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="{% url 'list' %}" style="font-family: 'ZCOOL KuaiLe', cursive; font-size: 25px;">ImageDetection</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="{% url 'list' %}" style="">Image Detection</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+
+           <div class="collapse navbar-collapse" id="navbarNav">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'list' %}">List View <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'list' %}"><button class="btn btn-success my-2 my-sm-0" type="submit">List</button><span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'upload'%}"">Upload</a>
+                <a class="nav-link" href="{% url 'upload' %}"><button class="btn btn-success my-2 my-sm-0" type="submit">Upload</button><span class="sr-only">(current)</span></a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action={% url 'logout' %}>
               <button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
             </form>
           </div>
+        </div>
         </nav>
     <div class="container-fluid">
 
-    {% block body %}{% endblock %}
+    {% block body %}
+    
+    {% endblock %}
 
     </div>
   </body>

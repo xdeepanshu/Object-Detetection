@@ -5,6 +5,9 @@
       <div class="col-md-4">
       <div style="margin-top:10%;">
       <a href="{% url 'list' %} "><img src="{{ photo.image.url }}" class="card-img-top" alt="{{photo.image.public_id}}"></a>
+      <form action="delete" method="delete">
+      <button class="btn btn-danger" type="submit" value="delete">Delete</button>
+      </form>
       </div>
       </div>
       <div class="col-md-8" style="margin-top: 10px;">
