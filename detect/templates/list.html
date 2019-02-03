@@ -4,7 +4,7 @@
 {% block body %}
   <div class="container-fluid">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Welcome {{user}}.</h1>
+  <h1 class="display-4">Welcome {{user|capfirst}}.</h1>
   
   <div class="photos">
     {% if not photos.exists %}
@@ -16,19 +16,15 @@
   </div>
     
     {% for photo in photos %}
-      <div class="row">
-      <div class="col-lg-6" style="margin: 10px;">
+      <div class="row" style="float:left; width: 33%; margin-top: 10px;">
+      <div class="col-lg-6" >
       <div class="card" style="width: 18rem;">
       <a href="/photo_detail/{{photo.image.public_id}}"><img src="{{ photo.image.url }}" class="card-img-top" alt="{{photo.image.public_id}}"></a>
-      <!--<div class="card-body">
-      <h5 class="card-title">Created At</h5>
-      <p class="card-text">{{photo.create_time|truncatewords:"10"}}</p>
-      </div>-->
       </div>
       </div>
       </div>
     {% endfor %}
-  </div>
 {% endblock %}
+
 {% block javascript %}
 {% endblock %}
