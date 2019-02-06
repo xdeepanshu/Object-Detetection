@@ -1,5 +1,5 @@
 import six
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -51,6 +51,8 @@ def photo_detail(request,public_id):
     except ValueError as e:
         context = dict(photo=photo, error=e)
     return render(request, 'detail.html', context)
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 @login_required
 def photo_delete(request, public_id):
@@ -65,3 +67,7 @@ def photo_delete(request, public_id):
         pass
     return redirect('/')
 
+=======
+>>>>>>> parent of c2c5d75... Add delete button for web app
+=======
+>>>>>>> parent of c2c5d75... Add delete button for web app
