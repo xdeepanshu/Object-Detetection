@@ -1,4 +1,5 @@
 django>=2.1.5
 cloudinary 
 nameko
-pymsql
+djangorestframework
+#pymsql
