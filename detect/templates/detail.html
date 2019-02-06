@@ -12,7 +12,7 @@
       {% for each in text %}
             <li class="list-group-item"><h6>{{ each.class|title }}</h6> <p>{{ each.score }}</p></li>
       {% endfor %}
-      <button class="btn btn-danger" style="margin-bottom: 10px;" href="delete/{{photo.image.public_id}}">Delete</button>
+      <a class="btn btn-danger" style="margin-bottom: 10px;" href="{% url 'photo_delete_detect' public_id=photo.image.public_id %}">Delete</a>
       </ul>
       </div>
       </div>
