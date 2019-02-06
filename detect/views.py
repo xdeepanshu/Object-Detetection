@@ -48,21 +48,20 @@ def photo_detail(request,public_id):
             raise ObjectDoesNotExist()
     except ObjectDoesNotExist:
         pass
+    except ValueError as e:
+        context = dict(photo=photo, error=e)
     return render(request, 'detail.html', context)
 
 @login_required
 def photo_delete(request, public_id):
     user = request.user
-
     try:
         user_photos = Photo.objects.filter(user=user)
         for photo in user_photos:
             if photo.image.public_id == public_id:
                 #To delete it from an instance
                 photo.delete()
-            else:   
-                raise ObjectDoesNotExist()
-    except ObjectDoesNotExist:
+    except ObjectDoesNotExist as e:
         pass
     return redirect('/')
 
