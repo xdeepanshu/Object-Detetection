@@ -2,4 +2,4 @@ django>=2.1.5
 cloudinary 
 nameko
 djangorestframework
-#pymsql
+mysqlclient
